@@ -60,7 +60,7 @@ export default function Repositories() {
 
     async function fetchRepos() {
       try {
-        const res = await fetch("http://localhost:5000/api/github/repos", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/github/repos`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -160,7 +160,7 @@ export default function Repositories() {
           </svg>
           <p className="text-red-400 text-lg font-medium">{error}</p>
           <a
-            href="http://localhost:5000/api/auth/github/login"
+            href={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/auth/github/login`}
             className="inline-block mt-4 px-6 py-2 bg-[var(--color-primary)] text-[var(--color-background)] rounded-lg font-bold hover:bg-[var(--color-accent)] transition-colors"
           >
             Login with GitHub

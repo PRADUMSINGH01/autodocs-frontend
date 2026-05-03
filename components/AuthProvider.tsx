@@ -67,7 +67,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 
     async function fetchUser() {
       try {
-        const res = await fetch("http://localhost:5000/api/github/user", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/github/user`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.ok) {
@@ -91,7 +91,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     // Call backend to invalidate the session (clears GitHub token from Firestore)
     if (token) {
       try {
-        await fetch("http://localhost:5000/api/auth/logout", {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/auth/logout`, {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
         });
