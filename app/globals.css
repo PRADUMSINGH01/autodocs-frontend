@@ -12,14 +12,26 @@
   
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-lora);
+
+  --color-marketing-text: #1a231f;
+  --color-marketing-btn-bg: #1f2d25;
+  --color-marketing-btn-text: #ffffff;
+  --color-marketing-btn-outline: #8c9990;
 
   --animate-spin-slow: spin 20s linear infinite;
   --animate-spin-slow-reverse: spin 25s linear infinite reverse;
   --animate-pulse-slow: pulse-slow 8s ease-in-out infinite;
+  --animate-ken-burns: ken-burns 20s ease-in-out infinite alternate;
 
   @keyframes pulse-slow {
     0%, 100% { opacity: 0.4; transform: scale(1); }
     50% { opacity: 0.8; transform: scale(1.05); }
+  }
+
+  @keyframes ken-burns {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.1) translate(-2%, -1%); }
   }
 }
 

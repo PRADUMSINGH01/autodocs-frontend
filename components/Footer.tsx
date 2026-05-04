@@ -1,84 +1,82 @@
-"use client";
-
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-[var(--color-background)] border-t border-[var(--color-border)] pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
+    <footer className="relative bg-[#fcfaf5] pt-24 pb-12 overflow-hidden">
+      {/* Subtle Background Texture */}
+      <div className="absolute inset-0 -z-10 opacity-[0.15] mix-blend-multiply">
+        <Image
+          src="/water-bg.jpg"
+          alt="Footer texture"
+          fill
+          className="object-cover object-bottom"
+        />
+      </div>
+
+      {/* Decorative Top Border */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-amber-700/20 to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 mb-20">
           
-          {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4 group">
-              <div className="bg-[var(--color-surface)] p-2 rounded-xl border border-[var(--color-border)] group-hover:border-[var(--color-primary)]/50 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-[var(--color-primary)]"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-              </div>
-              <span className="font-bold text-xl text-[var(--color-foreground)] tracking-tight">
-                Auto<span className="text-[var(--color-primary)]">Docs</span>
-              </span>
-            </Link>
-            <p className="text-[var(--color-muted)] mb-6 max-w-sm leading-relaxed">
-              The seamless documentation tool for modern codebases. Push your code, and we'll handle the rest.
+          {/* Brand/Logo Column */}
+          <div className="col-span-1 md:col-span-1">
+            <h3 className="text-2xl font-bold text-[#3d2611] tracking-tight mb-4">AutoDocs</h3>
+            <p className="text-[#3d2611]/70 text-[15px] leading-relaxed mb-6 pr-4 font-medium">
+              The premium, agentic documentation platform for modern SaaS teams and indie hackers.
             </p>
-            <div className="flex gap-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors">
-                <span className="sr-only">Twitter</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-              </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors">
-                <span className="sr-only">GitHub</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors">
-                <span className="sr-only">LinkedIn</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <div className="flex items-center gap-4">
+              {/* X (Twitter) Icon */}
+              <a href="https://x.com/soloshippper" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-700 hover:bg-orange-500 hover:text-white transition-all shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
             </div>
           </div>
 
-          {/* Links Columns */}
+          {/* Product */}
           <div>
-            <h4 className="font-semibold text-[var(--color-foreground)] mb-4">Product</h4>
-            <ul className="space-y-3">
-              <li><Link href="/features" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Features</Link></li>
-              <li><Link href="/#how-it-works" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">How it Works</Link></li>
-              <li><Link href="/pricing" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Pricing</Link></li>
-              <li><Link href="#changelog" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Changelog</Link></li>
+            <h4 className="text-[14px] font-bold text-[#3d2611] mb-6 uppercase tracking-widest">Product</h4>
+            <ul className="space-y-4">
+              <li><Link href="/signup" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Start for Free</Link></li>
+              <li><Link href="#features" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Features</Link></li>
+              <li><Link href="#how-it-works" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">How It Works</Link></li>
+              <li><Link href="/pricing" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Pricing</Link></li>
             </ul>
           </div>
 
+          {/* Resources */}
           <div>
-            <h4 className="font-semibold text-[var(--color-foreground)] mb-4">Resources</h4>
-            <ul className="space-y-3">
-              <li><Link href="/docs" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Documentation</Link></li>
-              <li><Link href="/blog" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Blog</Link></li>
-              <li><Link href="/community" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Community</Link></li>
-              <li><Link href="/help" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Help Center</Link></li>
+            <h4 className="text-[14px] font-bold text-[#3d2611] mb-6 uppercase tracking-widest">Resources</h4>
+            <ul className="space-y-4">
+              <li><Link href="/docs" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Documentation</Link></li>
+              <li><Link href="/blog" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Blog</Link></li>
+              <li><Link href="/community" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Community</Link></li>
+              <li><Link href="/guides" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">API Guides</Link></li>
             </ul>
           </div>
 
+          {/* Company */}
           <div>
-            <h4 className="font-semibold text-[var(--color-foreground)] mb-4">Company</h4>
-            <ul className="space-y-3">
-              <li><Link href="/about" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">About Us</Link></li>
-              <li><Link href="/careers" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Careers</Link></li>
-              <li><Link href="/policy" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Privacy Policy</Link></li>
-              <li><Link href="/policy" className="text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">Terms of Service</Link></li>
+            <h4 className="text-[14px] font-bold text-[#3d2611] mb-6 uppercase tracking-widest">Company</h4>
+            <ul className="space-y-4">
+              <li><Link href="/privacy" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Terms of Service</Link></li>
+              <li><a href="mailto:team@autodocs.com" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Contact Us</a></li>
             </ul>
           </div>
+          
         </div>
-
-        <div className="pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[var(--color-muted)] text-sm">
-            &copy; {currentYear} Auto Docs Inc. All rights reserved.
+        
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-[#3d2611]/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#3d2611]/60 text-sm font-semibold">
+            &copy; {new Date().getFullYear()} AutoDocs Inc. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-sm text-[var(--color-muted)]">
-            <span>Made with</span>
-            <span className="text-[var(--color-secondary)]">♥</span>
-            <span>for developers</span>
+          <div className="flex items-center gap-2 text-sm font-bold text-[#3d2611]/70">
+            <span>Built with</span>
+            <span className="text-orange-500 animate-pulse">❤</span>
+            <span>by Agents</span>
           </div>
         </div>
       </div>

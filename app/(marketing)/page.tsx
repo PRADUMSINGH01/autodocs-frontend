@@ -1,11 +1,11 @@
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
+import AnimatedWorkflow from "@/components/AnimatedWorkflow";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Hero />
-      <Features />
+      <AnimatedWorkflow />
     </div>
   );
 }
