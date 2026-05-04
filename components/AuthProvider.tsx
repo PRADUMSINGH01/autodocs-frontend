@@ -40,9 +40,8 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     const urlToken = searchParams.get("token");
 
     if (urlToken) {
-      // Save token to localStorage, cookies and clean up the URL
-      localStorage.setItem("shipquill_token", urlToken);
-      document.cookie = `shipquill_token=${urlToken}; path=/; max-age=31536000; SameSite=Lax`;
+      // Save token to localStorage and clean up the URL
+      localStorage.setItem("autodocs_token", urlToken);
       setToken(urlToken);
 
       // Remove token from URL without triggering a full page reload
@@ -50,11 +49,9 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
       router.replace(cleanUrl);
     } else {
       // 2. Check localStorage for an existing session
-      const savedToken = localStorage.getItem("shipquill_token");
+      const savedToken = localStorage.getItem("autodocs_token");
       if (savedToken) {
         setToken(savedToken);
-        // Also ensure cookie is set if token exists in localStorage
-        document.cookie = `shipquill_token=${savedToken}; path=/; max-age=31536000; SameSite=Lax`;
       }
     }
 
@@ -78,8 +75,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
           setUser(data);
         } else {
           // Token is invalid or expired, clear it
-          localStorage.removeItem("shipquill_token");
-          document.cookie = "shipquill_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+          localStorage.removeItem("autodocs_token");
           setToken(null);
           setUser(null);
         }
@@ -104,8 +100,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
       }
     }
 
-    localStorage.removeItem("shipquill_token");
-    document.cookie = "shipquill_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    localStorage.removeItem("autodocs_token");
     setToken(null);
     setUser(null);
     router.push("/login");

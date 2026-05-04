@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Docs() {
   const docs = [
-    { name: "Frontend App Documentation", repo: "company/frontend-app", url: "frontend.shipquill.ink", status: "Live", version: "v2.1.0" },
-    { name: "Backend API Specs", repo: "company/backend-api", url: "backend.shipquill.ink", status: "Live", version: "v1.5.2" },
+    { name: "Frontend App Documentation", repo: "company/frontend-app", url: "frontend.autodocs.com", status: "Live", version: "v2.1.0" },
+    { name: "Backend API Specs", repo: "company/backend-api", url: "backend.autodocs.com", status: "Live", version: "v1.5.2" },
   ];
 
   return (
