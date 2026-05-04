@@ -5,9 +5,9 @@ export default function Hero() {
   return (
     <div className="relative min-h-screen flex items-center pt-24 z-40">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-        style={{ 
+        style={{
           maskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)'
         }}
@@ -25,12 +25,6 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div className="max-w-2xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/40 shadow-sm text-[#1a231f] text-sm font-semibold mb-8 tracking-wide">
-            <span className="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
-            ShipQuill for Enterprise now available
-          </div>
-
           {/* Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-[5rem] font-bold text-[#1a231f] tracking-tight mb-8 leading-[1.05]">
             You build the API. <br />
