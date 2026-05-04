@@ -13,7 +13,7 @@ export default function SettingsPage() {
   const [copied, setCopied] = useState(false);
   const isPro = false; // TODO: wire up to real subscription status from Firebase
 
-  const CNAME_TARGET = "proxy.autodocs.dev";
+  const CNAME_TARGET = "proxy.shipquill.ink";
 
   const handleAddDomain = () => {
     if (!domain.trim()) return;
@@ -230,7 +230,7 @@ export default function SettingsPage() {
               <span className="ml-auto text-[10px] font-black uppercase tracking-widest text-green-600 bg-green-500/10 border border-green-500/20 px-2 py-0.5 rounded-full">Recommended</span>
             </div>
             <p className="text-xs text-[var(--color-muted)] leading-relaxed">
-              Docs go live instantly on every merge to <code className="font-mono">main</code>. Zero manual steps. This is the full AutoDocs experience.
+              Docs go live instantly on every merge to <code className="font-mono">main</code>. Zero manual steps. This is the full ShipQuill experience.
             </p>
           </button>
           <button

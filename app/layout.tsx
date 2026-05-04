@@ -23,8 +23,13 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Auto Docs - Merge your repo, get automatic docs",
-  description: "Seamless, automated documentation for your codebases.",
+  title: "ShipQuill — Your agents write the docs",
+  description: "The agentic documentation platform for SaaS startups and indie hackers. Connect your repo and ship beautiful docs automatically.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

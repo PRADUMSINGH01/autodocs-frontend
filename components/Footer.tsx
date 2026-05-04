@@ -22,7 +22,7 @@ export default function Footer() {
           
           {/* Brand/Logo Column */}
           <div className="col-span-1 md:col-span-1">
-            <h3 className="text-2xl font-bold text-[#3d2611] tracking-tight mb-4">AutoDocs</h3>
+            <h3 className="text-2xl font-bold text-[#3d2611] tracking-tight mb-4">ShipQuill</h3>
             <p className="text-[#3d2611]/70 text-[15px] leading-relaxed mb-6 pr-4 font-medium">
               The premium, agentic documentation platform for modern SaaS teams and indie hackers.
             </p>
@@ -62,7 +62,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><Link href="/privacy" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Privacy Policy</Link></li>
               <li><Link href="/terms" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Terms of Service</Link></li>
-              <li><a href="mailto:team@autodocs.com" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Contact Us</a></li>
+              <li><a href="mailto:team@shipquill.ink" className="text-[#3d2611]/80 hover:text-orange-600 font-semibold transition-colors text-[15px]">Contact Us</a></li>
             </ul>
           </div>
           
@@ -71,7 +71,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#3d2611]/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[#3d2611]/60 text-sm font-semibold">
-            &copy; {new Date().getFullYear()} AutoDocs Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} ShipQuill. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-sm font-bold text-[#3d2611]/70">
             <span>Built with</span>

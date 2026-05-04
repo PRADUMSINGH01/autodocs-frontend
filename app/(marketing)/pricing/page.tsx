@@ -61,7 +61,7 @@ export default function Pricing() {
               <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">1 connected repository</span></div>
               <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">AI-generated docs on every push</span></div>
               <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">50 AI doc generations/month</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">Hosted on autodocs.dev subdomain</span></div>
+              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">Hosted on shipquill.ink subdomain</span></div>
               <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">REST API & Markdown export</span></div>
               <div className="flex gap-3 items-start"><CrossIcon /><span className="text-[#3d2611]/30 font-medium text-[15px]">Custom domain</span></div>
               <div className="flex gap-3 items-start"><CrossIcon /><span className="text-[#3d2611]/30 font-medium text-[15px]">Private repos</span></div>
@@ -127,7 +127,7 @@ export default function Pricing() {
         <div className="mt-16 text-center">
           <p className="text-[#3d2611]/50 text-[14px] font-medium">
             Need more than 10 repos or a custom integration?{" "}
-            <a href="mailto:team@autodocs.com" className="text-orange-600 font-bold hover:underline">
+            <a href="mailto:team@shipquill.ink" className="text-orange-600 font-bold hover:underline">
               Talk to us →
             </a>
           </p>

@@ -28,7 +28,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/40 shadow-sm text-[#1a231f] text-sm font-semibold mb-8 tracking-wide">
             <span className="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
-            AutoDocs for Enterprise now available
+            ShipQuill for Enterprise now available
           </div>
 
           {/* Headline */}

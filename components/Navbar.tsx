@@ -32,7 +32,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center group">
             <span className="font-serif text-[22px] font-bold text-[#1a231f] tracking-tight flex items-baseline">
-              AutoDocs
+              ShipQuill
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 ml-0.5 mb-1" />
             </span>
           </Link>
