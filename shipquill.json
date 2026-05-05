@@ -1,0 +1,13 @@
+{
+  "name": "Express.js",
+  "logo": "BookOpen",
+  "theme": {
+    "primary": "#f59e0b" 
+  },
+  "navigation": [
+    {
+      "group": "Overview",
+      "pages": ["Executive Summary", "Architecture Deep-Dive", "API Reference"]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography";
 @theme inline {
   --color-background: #0F1117;
   --color-surface: #1A1F2E;
