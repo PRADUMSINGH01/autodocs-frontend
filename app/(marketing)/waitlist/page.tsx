@@ -10,28 +10,23 @@ export const metadata = {
 
 export default function WaitlistPage() {
   return (
-    <div className="relative min-h-screen flex flex-col">
-
-      {/* Background — CSS only, same as Hero, works on all deployment platforms */}
-      <div
-        className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-        style={{
-          maskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)',
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'url(/water-bg.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
+    <div className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* Background — Standard img tag for maximum reliability */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <img
+          src="/water-bg.jpg"
+          alt="Background"
+          className="w-full h-full object-cover opacity-90"
         />
         {/* Same overlay as Hero */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/50 to-transparent" />
-        {/* Extra lightening from the top so text is always readable */}
         <div className="absolute inset-0 bg-white/30" />
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, transparent calc(100% - 200px), white 100%)'
+          }}
+        />
       </div>
 
       {/* Page Content */}

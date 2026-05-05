@@ -2,24 +2,21 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="relative min-h-screen flex items-center pt-24 z-40">
-      {/* Background Image — CSS only, no next/image, works on all platforms */}
-      <div
-        className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-        style={{
-          maskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)',
-        }}
-      >
-        <div
-          className="absolute inset-0 animate-ken-burns"
-          style={{
-            backgroundImage: 'url(/water-bg.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
+    <div className="relative min-h-screen flex items-center pt-24 overflow-hidden">
+      {/* Background Image — Standard img tag for maximum reliability */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <img
+          src="/water-bg.jpg"
+          alt="Background"
+          className="w-full h-full object-cover animate-ken-burns opacity-90"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/40 to-transparent" />
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, transparent calc(100% - 200px), white 100%)'
+          }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
