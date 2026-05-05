@@ -5,10 +5,11 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Paths that are ALWAYS allowed
-  const isPublicPath = 
-    pathname === '/' || 
-    pathname.startsWith('/docs-preview') || 
-    pathname.startsWith('/_next') || 
+  const isPublicPath =
+    pathname === '/' ||
+    pathname === '/waitlist' ||
+    pathname.startsWith('/docs-preview') ||
+    pathname.startsWith('/_next') ||
     pathname.startsWith('/api/waitlist') || // Allow waitlist API if it's local
     pathname === '/favicon.ico';
 

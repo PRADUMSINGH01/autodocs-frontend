@@ -53,6 +53,23 @@ export default function Hero() {
               How It Works
             </Link>
           </div>
+
+          {/* Waitlist Teaser */}
+          <div className="mt-8 flex items-center gap-3">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-violet-600" />
+            </span>
+            <p className="text-sm text-[#1a231f]/70 font-medium">
+              In private beta —{' '}
+              <Link
+                href="/waitlist"
+                className="text-violet-700 hover:text-violet-900 font-semibold underline underline-offset-4 transition-colors"
+              >
+                Join the waitlist for early access →
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
