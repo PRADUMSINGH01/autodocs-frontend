@@ -1,5 +1,6 @@
 import Link from "next/link";
 import waterBg from "@/public/water-bg.jpg";
+import WaitlistForm from "./WaitlistForm";
 
 export default function Hero() {
   return (
@@ -51,21 +52,21 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* Waitlist Teaser */}
-          <div className="mt-8 flex items-center gap-3">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-violet-600" />
-            </span>
-            <p className="text-sm text-[#1a231f]/70 font-medium">
-              In private beta —{' '}
-              <Link
-                href="/waitlist"
-                className="text-violet-700 hover:text-violet-900 font-semibold underline underline-offset-4 transition-colors"
-              >
-                Join the waitlist for early access →
-              </Link>
+          {/* Prominent Waitlist Section */}
+          <div className="mt-12 p-8 rounded-3xl bg-white/40 backdrop-blur-md border border-white/60 shadow-xl max-w-xl">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-violet-600" />
+              </span>
+              <h3 className="text-sm font-bold text-violet-900 uppercase tracking-wider">Join Private Beta</h3>
+            </div>
+            
+            <p className="text-[#1a231f]/70 text-sm font-medium mb-6 leading-relaxed">
+              We're currently in a limited private beta. Join the waitlist to get early access and help shape the future of AI documentation.
             </p>
+
+            <WaitlistForm />
           </div>
         </div>
       </div>

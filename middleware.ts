@@ -13,14 +13,14 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/api/waitlist') || // Allow waitlist API if it's local
     pathname === '/favicon.ico';
 
-  // If it's a login or register path, or dashboard, redirect to home
+  // If it's a login or register path, or dashboard, redirect to waitlist
   if (pathname.startsWith('/login') || pathname.startsWith('/register') || pathname.startsWith('/dashboard')) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(new URL('/waitlist', request.url));
   }
 
-  // For anything else not in public paths, redirect to home
+  // For anything else not in public paths, redirect to waitlist
   if (!isPublicPath) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(new URL('/waitlist', request.url));
   }
 
   return NextResponse.next();
