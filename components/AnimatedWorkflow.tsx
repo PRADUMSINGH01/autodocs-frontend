@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import fishermanBg from "@/public/fisherman-bg.jpg";
 
 export default function AnimatedWorkflow() {
   const [activeStep, setActiveStep] = useState(0);
@@ -47,16 +47,13 @@ export default function AnimatedWorkflow() {
   ];
 
   return (
-    <section id="how-it-works" className="pb-32 pt-[250px] relative overflow-hidden -mt-[200px] z-10">
+    <section id="how-it-works" className="pb-32 pt-20 relative overflow-hidden z-10">
       {/* Actual Image Background */}
       <div className="absolute inset-0 -z-20">
-        <Image
-          src="/fisherman-bg.jpg"
-          alt="Fisherman background"
-          fill
-          priority
-          className="object-cover object-bottom"
-          quality={100}
+        <img
+          src={fishermanBg.src}
+          alt="ShipQuill Fisherman Background"
+          className="w-full h-full object-cover object-bottom"
         />
         {/* Same opacity overlay as Hero for perfect matching */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/40 to-transparent" />

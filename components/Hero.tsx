@@ -20,7 +20,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 pb-20">
         <div className="max-w-2xl">
           {/* Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-[5rem] font-bold text-[#1a231f] tracking-tight mb-8 leading-[1.05]">
