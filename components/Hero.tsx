@@ -1,24 +1,23 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Hero() {
   return (
     <div className="relative min-h-screen flex items-center pt-24 z-40">
-      {/* Background Image */}
+      {/* Background Image — CSS only, no next/image, works on all platforms */}
       <div
         className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
         style={{
           maskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)'
+          WebkitMaskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)',
         }}
       >
-        <Image
-          src="/water-bg.jpg"
-          alt="Sunset over water"
-          fill
-          priority
-          className="object-cover object-center animate-ken-burns"
-          quality={100}
+        <div
+          className="absolute inset-0 animate-ken-burns"
+          style={{
+            backgroundImage: 'url(/water-bg.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/40 to-transparent" />
       </div>

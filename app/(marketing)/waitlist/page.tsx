@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Shield, Zap, Code2 } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Code2 } from 'lucide-react';
 import WaitlistForm from '@/components/WaitlistForm';
 
 export const metadata = {
@@ -13,7 +12,7 @@ export default function WaitlistPage() {
   return (
     <div className="relative min-h-screen flex flex-col">
 
-      {/* Background — same water image as Hero */}
+      {/* Background — CSS only, same as Hero, works on all deployment platforms */}
       <div
         className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
         style={{
@@ -21,13 +20,13 @@ export default function WaitlistPage() {
           WebkitMaskImage: 'linear-gradient(to bottom, black calc(100% - 200px), transparent 100%)',
         }}
       >
-        <Image
-          src="/water-bg.jpg"
-          alt="Background"
-          fill
-          priority
-          className="object-cover object-center"
-          quality={100}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/water-bg.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         />
         {/* Same overlay as Hero */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/50 to-transparent" />

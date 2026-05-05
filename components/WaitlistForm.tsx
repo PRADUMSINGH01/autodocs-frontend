@@ -1,25 +1,42 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowRight, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+
+// Robust email validation regex
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
 
 export default function WaitlistForm() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
 
+  const validateEmail = (value: string): string | null => {
+    if (!value.trim()) return 'Email address is required.';
+    if (!EMAIL_REGEX.test(value.trim())) return 'Please enter a valid email address.';
+    return null;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+
+    // Client-side validation before hitting the API
+    const validationError = validateEmail(email);
+    if (validationError) {
+      setStatus('error');
+      setMessage(validationError);
+      return;
+    }
 
     setStatus('loading');
+    setMessage('');
+
     try {
-      const response = await fetch('http://localhost:5000/api/waitlist', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+      const response = await fetch(`${apiUrl}/api/waitlist`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim().toLowerCase() }),
       });
 
       const data = await response.json();
@@ -30,41 +47,50 @@ export default function WaitlistForm() {
         setEmail('');
       } else {
         setStatus('error');
-        setMessage(data.error || 'Something went wrong.');
+        setMessage(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
-      setMessage('Failed to connect to server.');
+      setMessage('Could not reach the server. Please try again later.');
     }
   };
 
   if (status === 'success') {
     return (
-      <div className="bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 p-6 rounded-2xl text-center">
-        <h3 className="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-2">🎉 You're on the list!</h3>
-        <p className="text-emerald-600 dark:text-emerald-500/80">{message}</p>
+      <div className="flex flex-col items-center gap-3 bg-emerald-50 border border-emerald-200 px-8 py-6 rounded-2xl text-center shadow-sm">
+        <CheckCircle2 className="w-8 h-8 text-emerald-500" />
+        <h3 className="text-lg font-bold text-emerald-800">You're on the list!</h3>
+        <p className="text-sm text-emerald-700">{message}</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
-      <div className="relative group">
+    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto" noValidate>
+      <div className="relative">
         <input
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email for early access..."
-          required
-          className="w-full bg-white dark:bg-[#151822] border border-gray-200 dark:border-gray-800 px-6 py-4 rounded-full font-sans text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all shadow-sm pr-36"
+          onChange={(e) => {
+            setEmail(e.target.value);
+            // Clear error as user types
+            if (status === 'error') { setStatus('idle'); setMessage(''); }
+          }}
+          placeholder="Enter your work email..."
+          autoComplete="email"
+          className={`w-full bg-white border px-6 py-4 rounded-full text-gray-900 font-medium focus:outline-none focus:ring-2 transition-all shadow-sm pr-40 ${
+            status === 'error'
+              ? 'border-red-300 focus:ring-red-300'
+              : 'border-gray-200 focus:ring-[#1f2d25]/30'
+          }`}
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="absolute right-2 top-2 bottom-2 bg-primary hover:bg-primary/90 text-white px-6 rounded-full font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="absolute right-2 top-2 bottom-2 bg-[#1f2d25] hover:bg-black text-white px-5 rounded-full font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed text-sm"
         >
           {status === 'loading' ? (
-            <Loader2 className="w-5 h-5 animate-spin" />
+            <Loader2 className="w-4 h-4 animate-spin" />
           ) : (
             <>
               Join Waitlist
@@ -73,8 +99,12 @@ export default function WaitlistForm() {
           )}
         </button>
       </div>
-      {status === 'error' && (
-        <p className="mt-3 text-red-500 text-sm text-center font-medium">{message}</p>
+
+      {status === 'error' && message && (
+        <div className="mt-3 flex items-center justify-center gap-2 text-red-600 text-sm font-medium">
+          <AlertCircle className="w-4 h-4 shrink-0" />
+          {message}
+        </div>
       )}
     </form>
   );
