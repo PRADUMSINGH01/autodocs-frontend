@@ -8,9 +8,16 @@ export function middleware(request: NextRequest) {
   const isPublicPath =
     pathname === '/' ||
     pathname === '/waitlist' ||
+    pathname === '/pricing' ||
+    pathname === '/privacy' ||
+    pathname === '/terms' ||
+    pathname === '/blog' ||
+    pathname === '/community' ||
+    pathname === '/guides' ||
+    pathname === '/docs' ||
     pathname.startsWith('/docs-preview') ||
     pathname.startsWith('/_next') ||
-    pathname.startsWith('/api/waitlist') || // Allow waitlist API if it's local
+    pathname.startsWith('/api/waitlist') ||
     pathname === '/favicon.ico';
 
   // If it's a login or register path, or dashboard, redirect to waitlist

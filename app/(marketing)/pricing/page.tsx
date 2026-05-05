@@ -1,136 +1,130 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
+import { Check } from 'lucide-react';
+import WaitlistForm from '@/components/WaitlistForm';
+import waterBg from '@/public/water-bg.jpg';
 
 export const metadata = {
-  title: "Pricing - Auto Docs",
-  description: "Simple, transparent pricing for indie hackers and SaaS teams.",
+  title: 'Pricing – ShipQuill',
+  description: 'Simple, transparent pricing for teams of all sizes.',
 };
 
-const CheckIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-orange-500 shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
-);
+export default function PricingPage() {
+  const tiers = [
+    {
+      name: 'Starter',
+      price: '$0',
+      description: 'Perfect for side projects and indie hackers.',
+      features: ['1 Repository', 'Basic AI Analysis', 'Standard Themes', 'Community Support'],
+      cta: 'Join Waitlist',
+      popular: false,
+    },
+    {
+      name: 'Pro',
+      price: '$49',
+      description: 'Everything you need to ship world-class docs.',
+      features: [
+        'Unlimited Repositories',
+        'Advanced AI Agents',
+        'Custom Domains',
+        'Priority Support',
+        'Custom Branding',
+      ],
+      cta: 'Join Waitlist',
+      popular: true,
+    },
+    {
+      name: 'Enterprise',
+      price: 'Custom',
+      description: 'For large organizations with complex needs.',
+      features: [
+        'SLA Guarantees',
+        'Dedicated Agent Training',
+        'On-premise Deployment',
+        'SSO/SAML Auth',
+        'Dedicated Support',
+      ],
+      cta: 'Contact Sales',
+      popular: false,
+    },
+  ];
 
-const CrossIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#3d2611]/20 shrink-0 mt-0.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-);
-
-export default function Pricing() {
   return (
-    <div className="flex-1 py-24 sm:py-32 relative overflow-hidden bg-[#fdfbf7]">
-      {/* Subtle Background Texture */}
-      <div className="absolute inset-0 z-0 opacity-[0.05] mix-blend-multiply pointer-events-none">
-        <Image src="/water-bg.jpg" alt="Background texture" fill className="object-cover object-bottom" />
+    <div className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <img
+          src={waterBg.src}
+          alt="Background"
+          className="w-full h-full object-cover opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white" />
       </div>
-      <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-amber-900/5 to-transparent pointer-events-none z-0" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <p className="text-sm font-bold uppercase tracking-widest text-orange-600 mb-4">Pricing</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#3d2611] tracking-tight mb-6">
-            Pay for what you ship.<br/>Not what you don't.
+      <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+        <div className="text-center mb-20">
+          <h1 className="text-4xl md:text-6xl font-bold text-[#1a231f] tracking-tight mb-6">
+            Simple, Transparent <br />
+            <span className="text-[#1f2d25]">Pricing.</span>
           </h1>
-          <p className="text-lg text-[#3d2611]/70 font-medium leading-relaxed">
-            Built for indie hackers and SaaS founders. No seat fees. No per-AI-message billing. Flat rate, always.
+          <p className="text-lg text-[#1a231f]/70 max-w-2xl mx-auto leading-relaxed font-medium">
+            Choose the plan that fits your stage. All plans include our core agentic documentation engine.
           </p>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">
-          
-          {/* Free Tier */}
-          <div className="bg-white/70 backdrop-blur-md border border-[#3d2611]/10 rounded-3xl p-10 hover:shadow-xl transition-all">
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-[#3d2611]/50 uppercase tracking-widest mb-3">Starter</h3>
-              <div className="flex items-end gap-1 mb-2">
-                <span className="text-6xl font-bold text-[#3d2611] tracking-tight">$0</span>
-                <span className="text-[#3d2611]/50 font-semibold pb-2">/month</span>
+        <div className="grid md:grid-cols-3 gap-8 mb-24">
+          {tiers.map((tier) => (
+            <div
+              key={tier.name}
+              className={`relative p-10 rounded-3xl backdrop-blur-xl border transition-all ${
+                tier.popular
+                  ? 'bg-white shadow-2xl border-[#1f2d25]/20 scale-105 z-10'
+                  : 'bg-white/40 border-white/60 shadow-xl'
+              }`}
+            >
+              {tier.popular && (
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1f2d25] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                  Most Popular
+                </div>
+              )}
+              <h3 className="text-xl font-bold text-[#1a231f] mb-2">{tier.name}</h3>
+              <div className="flex items-baseline gap-1 mb-4">
+                <span className="text-4xl font-bold text-[#1a231f]">{tier.price}</span>
+                {tier.price !== 'Custom' && <span className="text-[#1a231f]/60 font-medium">/mo</span>}
               </div>
-              <p className="text-[#3d2611]/60 text-[15px] font-medium leading-relaxed">
-                Kick the tyres. Ship your first docs for free — no card required, ever.
+              <p className="text-[#1a231f]/70 text-sm mb-8 leading-relaxed font-medium">
+                {tier.description}
               </p>
-            </div>
+              
+              <Link
+                href="/waitlist"
+                className={`w-full py-4 rounded-full font-bold text-sm transition-all flex items-center justify-center mb-8 ${
+                  tier.popular
+                    ? 'bg-[#1f2d25] text-white hover:bg-black shadow-lg'
+                    : 'bg-white/80 text-[#1f2d25] border border-[#1f2d25]/10 hover:bg-white'
+                }`}
+              >
+                {tier.cta}
+              </Link>
 
-            <Link href="/signup" className="block w-full py-3.5 px-4 bg-white border-2 border-[#3d2611]/15 text-[#3d2611] rounded-full text-center font-bold text-[15px] hover:border-orange-400 hover:text-orange-600 transition-all mb-10 shadow-sm">
-              Get Started Free
-            </Link>
-
-            <div className="space-y-4">
-              <p className="text-[13px] font-bold uppercase tracking-widest text-[#3d2611]/40 mb-4">What's included</p>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">1 connected repository</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">AI-generated docs on every push</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">50 AI doc generations/month</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">Hosted on shipquill.ink subdomain</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611]/80 font-medium text-[15px]">REST API & Markdown export</span></div>
-              <div className="flex gap-3 items-start"><CrossIcon /><span className="text-[#3d2611]/30 font-medium text-[15px]">Custom domain</span></div>
-              <div className="flex gap-3 items-start"><CrossIcon /><span className="text-[#3d2611]/30 font-medium text-[15px]">Private repos</span></div>
-              <div className="flex gap-3 items-start"><CrossIcon /><span className="text-[#3d2611]/30 font-medium text-[15px]">Versioned docs</span></div>
-            </div>
-          </div>
-
-          {/* Pro Tier */}
-          <div className="bg-white border-2 border-orange-400 rounded-3xl p-10 relative shadow-[0_20px_60px_rgba(245,158,11,0.12)]">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <span className="bg-gradient-to-r from-orange-600 to-amber-500 text-white px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-lg">
-                Most Popular
-              </span>
-            </div>
-
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-orange-600 uppercase tracking-widest mb-3">Pro</h3>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-6xl font-bold text-[#3d2611] tracking-tight">$19</span>
-                <span className="text-[#3d2611]/50 font-semibold pb-2">/month</span>
+              <div className="space-y-4">
+                {tier.features.map((feature) => (
+                  <div key={feature} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="text-sm text-[#1a231f]/80 font-medium">{feature}</span>
+                  </div>
+                ))}
               </div>
-              <p className="text-[13px] text-[#3d2611]/40 font-semibold mb-3">$15/mo billed annually — save $48/yr</p>
-              <p className="text-[#3d2611]/60 text-[15px] font-medium leading-relaxed">
-                Everything you need to go from commit to polished, versioned developer docs. Flat rate. No surprises.
-              </p>
             </div>
-
-            <Link href="/signup" className="block w-full py-3.5 px-4 bg-gradient-to-r from-orange-600 to-amber-500 text-white rounded-full text-center font-bold text-[15px] hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(245,158,11,0.35)] transition-all mb-10 shadow-md">
-              Start 14-Day Free Trial →
-            </Link>
-
-            <div className="space-y-4">
-              <p className="text-[13px] font-bold uppercase tracking-widest text-[#3d2611]/40 mb-4">Everything in Starter, plus</p>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611] font-semibold text-[15px]">Up to <strong>10 repos</strong> (public & private)</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611] font-semibold text-[15px]"><strong>Unlimited</strong> AI doc generations</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611] font-semibold text-[15px]"><strong>Custom domain</strong> (docs.yourapp.com)</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611] font-semibold text-[15px]">Versioned docs per Git tag/release</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611] font-semibold text-[15px]">Auto-generated OpenAPI / SDK refs</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611] font-semibold text-[15px]">CI/CD GitHub Action integration</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611] font-semibold text-[15px]">Interactive API playground</span></div>
-              <div className="flex gap-3 items-start"><CheckIcon /><span className="text-[#3d2611] font-semibold text-[15px]">Priority email support</span></div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Social proof / FAQ strip */}
-        <div className="mt-20 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-          <div className="bg-white/60 backdrop-blur-md border border-[#3d2611]/10 rounded-2xl p-6">
-            <p className="text-3xl font-bold text-[#3d2611] mb-1">14 days</p>
-            <p className="text-[#3d2611]/60 text-[14px] font-medium">Free Pro trial. No card required.</p>
-          </div>
-          <div className="bg-white/60 backdrop-blur-md border border-[#3d2611]/10 rounded-2xl p-6">
-            <p className="text-3xl font-bold text-[#3d2611] mb-1">$0 seats</p>
-            <p className="text-[#3d2611]/60 text-[14px] font-medium">Invite your whole team. No per-user fees.</p>
-          </div>
-          <div className="bg-white/60 backdrop-blur-md border border-[#3d2611]/10 rounded-2xl p-6">
-            <p className="text-3xl font-bold text-[#3d2611] mb-1">Cancel anytime</p>
-            <p className="text-[#3d2611]/60 text-[14px] font-medium">No lock-in. Export your docs anytime.</p>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-[#3d2611]/50 text-[14px] font-medium">
-            Need more than 10 repos or a custom integration?{" "}
-            <a href="mailto:team@shipquill.ink" className="text-orange-600 font-bold hover:underline">
-              Talk to us →
-            </a>
+        {/* Waitlist Callout */}
+        <div className="max-w-2xl mx-auto p-12 rounded-3xl bg-[#1f2d25] text-white text-center shadow-2xl">
+          <h2 className="text-2xl font-bold mb-4">Ready to ship?</h2>
+          <p className="text-white/70 mb-8 font-medium">
+            Join the waitlist today to lock in early-bird pricing and get a spot in our private beta.
           </p>
+          <WaitlistForm />
         </div>
       </div>
     </div>
