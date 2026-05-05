@@ -1,4 +1,5 @@
 import Link from "next/link";
+import waterBg from "@/public/water-bg.jpg";
 
 export default function Hero() {
   return (
@@ -6,8 +7,8 @@ export default function Hero() {
       {/* Background Image — Standard img tag for maximum reliability */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <img
-          src="/water-bg.jpg"
-          alt="Background"
+          src={waterBg.src}
+          alt="ShipQuill Background"
           className="w-full h-full object-cover animate-ken-burns opacity-90"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/40 to-transparent" />

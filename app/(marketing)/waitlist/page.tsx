@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Shield, Zap, Code2 } from 'lucide-react';
 import WaitlistForm from '@/components/WaitlistForm';
+import waterBg from '@/public/water-bg.jpg';
 
 export const metadata = {
   title: 'Join the Waitlist – ShipQuill',
@@ -14,8 +15,8 @@ export default function WaitlistPage() {
       {/* Background — Standard img tag for maximum reliability */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <img
-          src="/water-bg.jpg"
-          alt="Background"
+          src={waterBg.src}
+          alt="ShipQuill Background"
           className="w-full h-full object-cover opacity-90"
         />
         {/* Same overlay as Hero */}
