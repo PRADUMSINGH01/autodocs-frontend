@@ -1,16 +1,13 @@
 import WaitlistForm from '@/components/WaitlistForm';
-import waterBg from '@/public/water-bg.jpg';
+
+import Image from 'next/image';
 
 export default function ComingSoonPage({ title }: { title: string }) {
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <img
-          src={waterBg.src}
-          alt="Background"
-          className="w-full h-full object-cover opacity-90"
-        />
+
         <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white" />
       </div>
 
@@ -27,7 +24,7 @@ export default function ComingSoonPage({ title }: { title: string }) {
           {title} <br />
           <span className="text-[#1f2d25]">Coming Soon.</span>
         </h1>
-        
+
         <p className="text-lg text-[#1a231f]/70 max-w-xl mb-12 leading-relaxed font-medium">
           We're hard at work building the best documentation platform in the world. Join the waitlist to be the first to know when we launch this feature.
         </p>

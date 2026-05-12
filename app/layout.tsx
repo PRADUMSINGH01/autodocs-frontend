@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { Geist, Geist_Mono, Lora } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { ToastProvider } from "@/components/ToastProvider";
-import AuthProvider from "@/components/AuthProvider";
 import "./globals.css";
+import { ToastProvider } from "@/components/ToastProvider";
+import { ShipQuillAuthProvider } from "@/components/AuthProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +19,7 @@ const geistMono = Geist_Mono({
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -40,16 +40,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen bg-background text-foreground flex flex-col selection:bg-primary/30">
-        <ToastProvider>
-          <Suspense fallback={null}>
-            <AuthProvider>
-              {children}
-            </AuthProvider>
-          </Suspense>
-        </ToastProvider>
+      <body className="min-h-screen bg-background text-foreground transition-colors duration-300">
+        <ThemeProvider>
+          <ToastProvider>
+            <Suspense fallback={null}>
+              <ShipQuillAuthProvider>
+                {children}
+              </ShipQuillAuthProvider>
+            </Suspense>
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -52,35 +52,35 @@ export default function AnimatedWorkflow() {
       <div className="absolute inset-0 -z-20">
         <img
           src={fishermanBg.src}
-          alt="ShipQuill Fisherman Background"
-          className="w-full h-full object-cover object-bottom"
+          alt="ShipQuill Forest Background"
+          className="w-full h-full object-cover object-center opacity-90"
         />
         {/* Same opacity overlay as Hero for perfect matching */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCF9]/60 via-[#FDFCF9]/40 to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-32">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#3d2611] tracking-tight mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#1B3022] tracking-tight mb-6">
             The Agentic Workflow
           </h2>
-          <p className="text-[18px] text-[#3d2611]/80 leading-relaxed font-medium">
+          <p className="text-[18px] text-[#1B3022]/80 leading-relaxed font-medium">
             Watch how our agents turn raw code into beautiful documentation.
           </p>
         </div>
 
         <div className="relative">
           {/* Glowing Animated Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-[60px] left-[12%] right-[12%] h-[2px] bg-[#3d2611]/10" />
+          <div className="hidden md:block absolute top-[60px] left-[12%] right-[12%] h-[2px] bg-green-900/10" />
           <div className="hidden md:block absolute top-[60px] left-[12%] right-[12%] h-[2px] overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-transparent via-amber-500 to-transparent"
+              className="h-full bg-gradient-to-r from-transparent via-green-500 to-transparent"
               initial={{ x: "-100%" }}
               animate={{ x: "100%" }}
               transition={{ ease: "linear", duration: 3, repeat: Infinity }}
             />
             <motion.div
-              className="h-full bg-gradient-to-r from-orange-600 to-amber-500 absolute top-0 left-0"
+              className="h-full bg-gradient-to-r from-green-600 to-emerald-500 absolute top-0 left-0"
               initial={{ width: "0%" }}
               animate={{ width: `${(activeStep / 3) * 100}%` }}
               transition={{ ease: "easeInOut", duration: 0.8 }}
@@ -102,23 +102,23 @@ export default function AnimatedWorkflow() {
                   {/* Node */}
                   <motion.div
                     className={`w-28 h-28 rounded-full flex items-center justify-center mb-8 border transition-all duration-700 shadow-xl relative backdrop-blur-md ${isActive
-                      ? "bg-white border-orange-400 text-orange-500 scale-110"
+                      ? "bg-white border-green-400 text-green-600 scale-110"
                       : isPast
-                        ? "bg-[#fff4e0] border-amber-200 text-amber-600"
-                        : "bg-white/50 border-transparent text-[#3d2611]/30 grayscale"
+                        ? "bg-green-50 border-green-200 text-green-700"
+                        : "bg-white/50 border-transparent text-green-900/30 grayscale"
                       }`}
                     animate={isActive ? {
                       boxShadow: [
-                        "0px 0px 0px rgba(251,146,60,0)",
-                        "0px 0px 30px rgba(251,146,60,0.4)",
-                        "0px 0px 0px rgba(251,146,60,0)"
+                        "0px 0px 0px rgba(76,175,80,0)",
+                        "0px 0px 30px rgba(76,175,80,0.4)",
+                        "0px 0px 0px rgba(76,175,80,0)"
                       ]
                     } : {}}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     {isActive && (
                       <motion.div
-                        className="absolute inset-0 rounded-full border-2 border-orange-400"
+                        className="absolute inset-0 rounded-full border-2 border-green-400"
                         initial={{ scale: 1, opacity: 1 }}
                         animate={{ scale: 1.5, opacity: 0 }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
@@ -129,10 +129,10 @@ export default function AnimatedWorkflow() {
 
                   {/* Text */}
                   <div className={`transition-all duration-500 ${isPast ? "opacity-100 translate-y-0" : "opacity-40 translate-y-2"}`}>
-                    <h3 className="text-xl font-bold text-[#3d2611] mb-2 tracking-wide">
+                    <h3 className="text-xl font-bold text-[#1B3022] mb-2 tracking-wide">
                       {step.title}
                     </h3>
-                    <p className="text-[15px] text-[#3d2611]/80 font-medium">
+                    <p className="text-[15px] text-[#1B3022]/80 font-medium">
                       {step.description}
                     </p>
                   </div>
@@ -142,15 +142,15 @@ export default function AnimatedWorkflow() {
           </div>
         </div>
 
-        <div className="mt-40 pt-16 flex flex-col sm:flex-row items-center justify-between gap-8 bg-white/60 backdrop-blur-xl p-8 sm:p-12 rounded-3xl border border-white/40 shadow-xl relative overflow-hidden">
+        <div className="mt-40 pt-16 flex flex-col sm:flex-row items-center justify-between gap-8 bg-white/70 backdrop-blur-xl p-8 sm:p-12 rounded-3xl border border-white/60 shadow-2xl relative overflow-hidden">
           <div className="z-10">
-            <h4 className="text-2xl font-bold text-[#3d2611] mb-2">Ready to automate your docs?</h4>
-            <p className="text-[#3d2611]/80 text-[15px]">Join 10,000+ developers saving hours every week.</p>
+            <h4 className="text-2xl font-bold text-[#1B3022] mb-2">Ready to automate your docs?</h4>
+            <p className="text-[#1B3022]/80 text-[15px]">Join 10,000+ developers saving hours every week.</p>
           </div>
 
           <Link
             href="/signup"
-            className="z-10 shrink-0 px-8 py-3.5 bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-full font-bold text-[15px] hover:scale-105 transition-all shadow-[0_0_20px_rgba(245,158,11,0.2)]"
+            className="z-10 shrink-0 px-8 py-3.5 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full font-bold text-[15px] hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-green-900/20"
           >
             Start Writing
           </Link>

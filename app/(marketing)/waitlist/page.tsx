@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Shield, Zap, Code2 } from 'lucide-react';
 import WaitlistForm from '@/components/WaitlistForm';
-import waterBg from '@/public/water-bg.jpg';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'Join the Waitlist – ShipQuill',
@@ -12,17 +12,13 @@ export const metadata = {
 export default function WaitlistPage() {
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Background — Standard img tag for maximum reliability */}
+      {/* Background — Next.js Image for performance */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <img
-          src={waterBg.src}
-          alt="ShipQuill Background"
-          className="w-full h-full object-cover opacity-90"
-        />
+
         {/* Same overlay as Hero */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/50 to-transparent" />
         <div className="absolute inset-0 bg-white/30" />
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             background: 'linear-gradient(to bottom, transparent calc(100% - 200px), white 100%)'

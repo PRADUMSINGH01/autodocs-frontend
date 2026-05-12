@@ -4,9 +4,14 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Skip restrictions in development
+  if (process.env.NODE_ENV === 'development') {
+    return NextResponse.next();
+  }
+
   // Paths that are ALWAYS allowed
   const isPublicPath =
-    pathname === '/' ||
+    pathname === '/' ||pathname === '/dashboad' ||
     pathname === '/waitlist' ||
     pathname === '/pricing' ||
     pathname === '/privacy' ||

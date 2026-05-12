@@ -1,4 +1,4 @@
-import waterBg from '@/public/water-bg.jpg';
+
 
 export const metadata = {
   title: 'Terms of Service – ShipQuill',
@@ -10,11 +10,7 @@ export default function TermsPage() {
     <div className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <img
-          src={waterBg.src}
-          alt="Background"
-          className="w-full h-full object-cover opacity-90"
-        />
+
         <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white" />
       </div>
 
@@ -22,7 +18,7 @@ export default function TermsPage() {
         <h1 className="text-4xl md:text-5xl font-bold text-[#1a231f] tracking-tight mb-12">
           Terms of Service
         </h1>
-        
+
         <div className="prose prose-slate prose-lg max-w-none text-[#1a231f]/80 font-medium space-y-8">
           <section>
             <h2 className="text-2xl font-bold text-[#1a231f] mb-4">1. Acceptance of Terms</h2>

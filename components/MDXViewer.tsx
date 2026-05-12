@@ -15,14 +15,49 @@ const generateId = (children: any) => {
 // 1. Define custom components that might be used in the MDX (like Nextra components)
 const components = {
   // Map the Callout component used by the AI
-  Callout: (props: any) => (
-    <div className="bg-primary/10 border-l-4 border-primary p-4 my-6 rounded-r-md">
-      <div className="flex items-center gap-2 font-semibold text-primary dark:text-primary/80">
-        {props.emoji} {props.type === 'info' ? 'Note' : props.type || 'Info'}
+  Callout: (props: any) => {
+    const types: Record<string, any> = {
+      info: { bg: 'bg-blue-500/10', border: 'border-blue-500', text: 'text-blue-500', icon: 'ℹ️' },
+      warning: { bg: 'bg-amber-500/10', border: 'border-amber-500', text: 'text-amber-500', icon: '⚠️' },
+      error: { bg: 'bg-red-500/10', border: 'border-red-500', text: 'text-red-500', icon: '🚫' },
+      success: { bg: 'bg-emerald-500/10', border: 'border-emerald-500', text: 'text-emerald-500', icon: '✅' },
+    };
+    const style = types[props.type || 'info'] || types.info;
+    return (
+      <div className={`${style.bg} border-l-4 ${style.border} p-4 my-6 rounded-r-xl transition-all hover:shadow-md`}>
+        <div className={`flex items-center gap-2 font-bold uppercase tracking-wider text-xs ${style.text}`}>
+          {props.emoji || style.icon} {props.type || 'Info'}
+        </div>
+        <div className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+          {props.children}
+        </div>
       </div>
-      <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+    );
+  },
+  // Steps component for process documentation
+  Steps: (props: any) => (
+    <div className="steps-container ml-4 border-l border-gray-200 dark:border-gray-800 pl-8 my-8 space-y-8">
+      {props.children}
+    </div>
+  ),
+  // Card & CardGroup for feature grids
+  CardGroup: (props: any) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+      {props.children}
+    </div>
+  ),
+  Card: (props: any) => (
+    <div className="group p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 hover:border-primary/50 hover:shadow-xl transition-all duration-300 cursor-pointer">
+      <h4 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{props.title}</h4>
+      <div className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
         {props.children}
       </div>
+    </div>
+  ),
+  // Mermaid support
+  Mermaid: (props: any) => (
+    <div className="my-8 flex justify-center bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+      <pre className="mermaid text-sm opacity-80">{props.chart}</pre>
     </div>
   ),
   // Override standard HTML elements for premium typography and add IDs for linking

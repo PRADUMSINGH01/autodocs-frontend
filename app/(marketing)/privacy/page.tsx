@@ -1,4 +1,3 @@
-import waterBg from '@/public/water-bg.jpg';
 
 export const metadata = {
   title: 'Privacy Policy – ShipQuill',
@@ -10,11 +9,6 @@ export default function PrivacyPage() {
     <div className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <img
-          src={waterBg.src}
-          alt="Background"
-          className="w-full h-full object-cover opacity-90"
-        />
         <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white" />
       </div>
 
