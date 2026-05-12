@@ -1,6 +1,7 @@
 import Link from "next/link";
 import WaitlistForm from "./WaitlistForm";
 
+
 export default function Hero() {
   return (
     <div className="relative min-h-screen flex items-center pt-24 overflow-hidden">
