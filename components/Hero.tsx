@@ -12,10 +12,9 @@ export default function Hero() {
           loop
           playsInline
           preload="metadata"
-          poster="/hero-bg.png"
           className="w-full h-full object-cover"
         >
-          <source src="/hero.mov" type="video/mp4" />
+          <source src="/hero.mp4" type="video/mp4" />
         </video>
 
         {/* Soft overlay to blend text readability */}
